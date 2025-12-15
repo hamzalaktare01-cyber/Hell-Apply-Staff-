@@ -1,66 +1,137 @@
-<form id="applyForm">
-  <label>Discord Username</label>
-  <input type="text" id="username" required />
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Apply Staff Form</title>
+<style>
+    body {
+        margin: 0;
+        font-family: Arial, sans-serif;
+        background: linear-gradient(135deg, #ff0000, #000000);
+        color: #fff;
+        display: flex;
+        justify-content: center;
+        align-items: center;
+        height: 100vh;
+    }
 
-  <label>Age</label>
-  <input type="number" id="age" required />
+    .form-container {
+        background-color: rgba(0, 0, 0, 0.7);
+        padding: 30px;
+        border-radius: 15px;
+        width: 400px;
+        box-shadow: 0 0 20px rgba(255,0,0,0.6);
+    }
 
-  <label>Speciality (Choose up to 2)</label>
-  <select id="speciality" multiple required>
-    <option>Staff</option>
-    <option>Helper</option>
-    <option>Designer</option>
-    <option>Developer</option>
-  </select>
+    h2 {
+        text-align: center;
+        margin-bottom: 20px;
+        color: #ff0000;
+    }
 
-  <label>Experience</label>
-  <textarea id="experience" required></textarea>
+    label {
+        display: block;
+        margin-top: 15px;
+        margin-bottom: 5px;
+        font-weight: bold;
+    }
 
-  <label>Daily Availability (hours)</label>
-  <input type="text" id="availability" required />
+    input, select {
+        width: 100%;
+        padding: 10px;
+        border: none;
+        border-radius: 8px;
+        margin-bottom: 10px;
+    }
 
-  <button type="submit">Submit Application</button>
-</form>
+    button {
+        width: 100%;
+        padding: 12px;
+        background: linear-gradient(45deg, #ff0000, #000000);
+        color: #fff;
+        border: none;
+        border-radius: 8px;
+        font-size: 16px;
+        cursor: pointer;
+        margin-top: 10px;
+        transition: 0.3s;
+    }
+
+    button:hover {
+        opacity: 0.8;
+    }
+</style>
+</head>
+<body>
+<div class="form-container">
+    <h2>Apply Staff</h2>
+    <form id="applyForm">
+        <label for="discordName">Name in Discord</label>
+        <input type="text" id="discordName" name="discordName" required>
+
+        <label for="realName">Name IRL</label>
+        <input type="text" id="realName" name="realName" required>
+
+        <label for="age">Age</label>
+        <input type="number" id="age" name="age" required min="10">
+
+        <label for="experience">Experience</label>
+        <input type="text" id="experience" name="experience" required>
+
+        <label for="speciality">Speciality</label>
+        <select id="speciality" name="speciality" required>
+            <option value="">Select one</option>
+            <option value="Staff">Staff</option>
+            <option value="Helper">Helper</option>
+        </select>
+
+        <label for="hobby">Hobbies</label>
+        <select id="hobby" name="hobby" required>
+            <option value="">Select one</option>
+            <option value="Design">Design</option>
+            <option value="Dev">Dev</option>
+        </select>
+
+        <button type="submit">Apply</button>
+    </form>
+</div>
 
 <script>
-const webhookURL = "https://discord.com/api/webhooks/1436795695020380283/yr341QmOOKk0IhC0PCMbjFaq5TrwyMWyOvwvxn0WPFVkQ2Hk0ulcKSNN2TvPmWzT4ogu";
+    const webhookURL = "https://discord.com/api/webhooks/1436795695020380283/yr341QmOOKk0IhC0PCMbjFaq5TrwyMWyOvwvxn0WPFVkQ2Hk0ulcKSNN2TvPmWzT4ogu"; // Hna 7t webhook dyalk
 
-document.getElementById('applyForm').addEventListener('submit', function(e) {
-  e.preventDefault();
+    document.getElementById('applyForm').addEventListener('submit', function(e) {
+        e.preventDefault();
 
-  const specialitySelect = document.getElementById('speciality');
-  const selectedSpecialities = Array.from(specialitySelect.selectedOptions).map(o => o.value);
+        const discordName = document.getElementById('discordName').value;
+        const realName = document.getElementById('realName').value;
+        const age = document.getElementById('age').value;
+        const experience = document.getElementById('experience').value;
+        const speciality = document.getElementById('speciality').value;
+        const hobby = document.getElementById('hobby').value;
 
-  if (selectedSpecialities.length > 2) {
-    alert("You can select up to 2 Specialities only!");
-    return;
-  }
+        const data = {
+            content: `**New Staff Application**\n\n**Discord Name:** ${discordName}\n**IRL Name:** ${realName}\n**Age:** ${age}\n**Experience:** ${experience}\n**Speciality:** ${speciality}\n**Hobby:** ${hobby}`
+        };
 
-  const data = {
-    content: "📩 **New Staff Application**",
-    embeds: [{
-      title: "Staff Apply",
-      color: 5793266,
-      fields: [
-        { name: "Username", value: document.getElementById('username').value, inline: true },
-        { name: "Age", value: document.getElementById('age').value, inline: true },
-        { name: "Speciality", value: selectedSpecialities.join(", "), inline: true },
-        { name: "Experience", value: document.getElementById('experience').value },
-        { name: "Availability", value: document.getElementById('availability').value }
-      ]
-    }]
-  };
-
-  fetch(webhookURL, {
-    method: 'POST',
-    headers: { 'Content-Type': 'application/json' },
-    body: JSON.stringify(data)
-  }).then(() => {
-    alert('Application sent successfully!');
-    document.getElementById('applyForm').reset();
-  }).catch(() => {
-    alert('Error sending application');
-  });
-});
+        fetch(webhookURL, {
+            method: "POST",
+            headers: { "Content-Type": "application/json" },
+            body: JSON.stringify(data)
+        })
+        .then(response => {
+            if (response.ok) {
+                alert("Application sent successfully!");
+                document.getElementById('applyForm').reset();
+            } else {
+                alert("Failed to send application.");
+            }
+        })
+        .catch(error => {
+            console.error("Error:", error);
+            alert("Error sending application.");
+        });
+    });
 </script>
-        
+</body>
+</html>
