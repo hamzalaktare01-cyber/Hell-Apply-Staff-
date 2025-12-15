@@ -2,141 +2,170 @@
 <html lang="en">
 <head>
 <meta charset="UTF-8">
+<title>Staff Apply - Login</title>
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
-<title>Apply Staff Form</title>
+
 <style>
-    body {
-        margin: 0;
-        font-family: Arial, sans-serif;
-        /* Background image + gradient overlay */
-        background: linear-gradient(135deg, rgba(255,0,0,0.7), rgba(0,0,0,0.7)), 
-                    url('https://images.unsplash.com/photo-1601758173921-9f4c3e9c6a14?auto=format&fit=crop&w=1400&q=80') no-repeat center center fixed;
-        background-size: cover;
-        color: #fff;
-        display: flex;
-        justify-content: center;
-        align-items: center;
-        height: 100vh;
-    }
+body {
+    margin: 0;
+    font-family: Arial, sans-serif;
+    background: linear-gradient(135deg, rgba(255,0,0,0.7), rgba(0,0,0,0.8)),
+    url('https://images.unsplash.com/photo-1601758173921-9f4c3e9c6a14?auto=format&fit=crop&w=1400&q=80') no-repeat center/cover;
+    height: 100vh;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    color: white;
+}
 
-    .form-container {
-        background-color: rgba(0, 0, 0, 0.75);
-        padding: 30px;
-        border-radius: 15px;
-        width: 400px;
-        box-shadow: 0 0 20px rgba(255,0,0,0.6);
-        backdrop-filter: blur(5px);
-    }
+.box {
+    background: rgba(0,0,0,0.75);
+    padding: 30px;
+    border-radius: 15px;
+    width: 380px;
+    box-shadow: 0 0 20px red;
+    display: none;
+}
 
-    h2 {
-        text-align: center;
-        margin-bottom: 20px;
-        color: #ff0000;
-        text-shadow: 1px 1px 5px black;
-    }
+.box.active {
+    display: block;
+}
 
-    label {
-        display: block;
-        margin-top: 15px;
-        margin-bottom: 5px;
-        font-weight: bold;
-    }
+h2 {
+    text-align: center;
+    color: red;
+    margin-bottom: 20px;
+}
 
-    input, select {
-        width: 100%;
-        padding: 10px;
-        border: none;
-        border-radius: 8px;
-        margin-bottom: 10px;
-    }
+label {
+    display: block;
+    margin-top: 12px;
+    font-weight: bold;
+}
 
-    button {
-        width: 100%;
-        padding: 12px;
-        background: linear-gradient(45deg, #ff0000, #000000);
-        color: #fff;
-        border: none;
-        border-radius: 8px;
-        font-size: 16px;
-        cursor: pointer;
-        margin-top: 10px;
-        transition: 0.3s;
-    }
+input, select {
+    width: 100%;
+    padding: 10px;
+    border-radius: 8px;
+    border: none;
+    margin-top: 5px;
+}
 
-    button:hover {
-        opacity: 0.8;
-    }
+button {
+    width: 100%;
+    padding: 12px;
+    margin-top: 20px;
+    background: linear-gradient(45deg, red, black);
+    color: white;
+    border: none;
+    border-radius: 10px;
+    font-size: 16px;
+    cursor: pointer;
+}
+
+button:hover {
+    opacity: 0.85;
+}
 </style>
 </head>
 <body>
-<div class="form-container">
+
+<!-- LOGIN -->
+<div class="box active" id="loginBox">
+    <h2>Login</h2>
+
+    <label>User Discord</label>
+    <input type="text" id="loginUser" required>
+
+    <label>Password (4 chiffres)</label>
+    <input type="password" id="loginPass" maxlength="4" required>
+
+    <label>Confirm Password</label>
+    <input type="password" id="confirmPass" maxlength="4" required>
+
+    <button onclick="login()">Login</button>
+</div>
+
+<!-- APPLY STAFF -->
+<div class="box" id="applyBox">
     <h2>Apply Staff</h2>
-    <form id="applyForm">
-        <label for="discordName">Name in Discord</label>
-        <input type="text" id="discordName" name="discordName" required>
 
-        <label for="realName">Name IRL</label>
-        <input type="text" id="realName" name="realName" required>
+    <label>Name in Discord</label>
+    <input type="text" id="discordName">
 
-        <label for="age">Age</label>
-        <input type="number" id="age" name="age" required min="10">
+    <label>Name IRL</label>
+    <input type="text" id="realName">
 
-        <label for="experience">Experience</label>
-        <input type="text" id="experience" name="experience" required>
+    <label>Age</label>
+    <input type="number" id="age">
 
-        <label for="speciality">Speciality</label>
-        <select id="speciality" name="speciality" required>
-            <option value="">Select one</option>
-            <option value="Staff">Staff</option>
-            <option value="Helper">Helper</option>
-        </select>
+    <label>Experience</label>
+    <input type="text" id="experience">
 
-        <label for="hobby">Hobbies</label>
-        <select id="hobby" name="hobby" required>
-            <option value="">Select one</option>
-            <option value="Design">Design</option>
-            <option value="Dev">Dev</option>
-        </select>
+    <label>Speciality</label>
+    <select id="speciality">
+        <option>Staff</option>
+        <option>Helper</option>
+    </select>
 
-        <button type="submit">Apply</button>
-    </form>
+    <label>Hobby</label>
+    <select id="hobby">
+        <option>Design</option>
+        <option>Dev</option>
+    </select>
+
+    <button onclick="sendToDiscord()">Apply</button>
 </div>
 
 <script>
-    const webhookURL = "https://discord.com/api/webhooks/1436795695020380283/yr341QmOOKk0IhC0PCMbjFaq5TrwyMWyOvwvxn0WPFVkQ2Hk0ulcKSNN2TvPmWzT4ogu"; // Hna 7t webhook dyalk
+const webhookURL = "https://discord.com/api/webhooks/1436795695020380283/yr341QmOOKk0IhC0PCMbjFaq5TrwyMWyOvwvxn0WPFVkQ2Hk0ulcKSNN2TvPmWzT4ogu";
 
-    document.getElementById('applyForm').addEventListener('submit', function(e) {
-        e.preventDefault();
+function login() {
+    const user = document.getElementById("loginUser").value;
+    const pass = document.getElementById("loginPass").value;
+    const confirm = document.getElementById("confirmPass").value;
 
-        const discordName = document.getElementById('discordName').value;
-        const realName = document.getElementById('realName').value;
-        const age = document.getElementById('age').value;
-        const experience = document.getElementById('experience').value;
-        const speciality = document.getElementById('speciality').value;
-        const hobby = document.getElementById('hobby').value;
+    if (pass.length !== 4) {
+        alert("Password khaso يكون 4 chiffres");
+        return;
+    }
 
-        const data = {
-            content: `**New Staff Application**\n\n**Discord Name:** ${discordName}\n**IRL Name:** ${realName}\n**Age:** ${age}\n**Experience:** ${experience}\n**Speciality:** ${speciality}\n**Hobby:** ${hobby}`
-        };
+    if (pass !== confirm) {
+        alert("Password machi nafs confirmation");
+        return;
+    }
 
-        fetch(webhookURL, {
-            method: "POST",
-            headers: { "Content-Type": "application/json" },
-            body: JSON.stringify(data)
-        })
-        .then(response => {
-            if (response.ok) {
-                alert("Application sent successfully!");
-                document.getElementById('applyForm').reset();
-            } else {
-                alert("Failed to send application.");
-            }
-        })
-        .catch(error => {
-            console.error("Error:", error);
-            alert("Error sending application.");
-        });
+    if (user === "") {
+        alert("User Discord khass ytkteb");
+        return;
+    }
+
+    document.getElementById("loginBox").classList.remove("active");
+    document.getElementById("applyBox").classList.add("active");
+}
+
+function sendToDiscord() {
+    const data = {
+        content:
+        `**New Staff Application**\n
+        **Discord:** ${discordName.value}
+        **IRL Name:** ${realName.value}
+        **Age:** ${age.value}
+        **Experience:** ${experience.value}
+        **Speciality:** ${speciality.value}
+        **Hobby:** ${hobby.value}
+        https://cdn.discordapp.com/attachments/1450109489926897694/1450117378812936302/Sans_titre_14_20251105201004.png?ex=69415e8c&is=69400d0c&hm=712fe2deb80a3ed73076ab9fc993f9d1a1ca830b243192c65d9c88e9fa076613&`
+    };
+
+    fetch(webhookURL, {
+        method: "POST",
+        headers: {"Content-Type": "application/json"},
+        body: JSON.stringify(data)
     });
+
+    alert("Apply Staff Hell Sent ✅");
+}
 </script>
+
 </body>
 </html>
