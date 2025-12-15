@@ -2,207 +2,145 @@
 <html lang="en">
 <head>
 <meta charset="UTF-8">
-<title>Staff Apply - Login</title>
+<title>Hell Community | Staff Apply</title>
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
-
+<link href="https://fonts.googleapis.com/css2?family=Montserrat:wght@400;600;800&display=swap" rel="stylesheet">
 <style>
-body {
-    margin: 0;
-    font-family: Arial, sans-serif;
-    background: linear-gradient(135deg, rgba(255,0,0,0.7), rgba(0,0,0,0.8)),
-    url('https://images.unsplash.com/photo-1601758173921-9f4c3e9c6a14?auto=format&fit=crop&w=1400&q=80') no-repeat center/cover;
-    height: 100vh;
-    display: flex;
-    justify-content: center;
-    align-items: center;
-    color: white;
+*{box-sizing:border-box;font-family:'Montserrat',sans-serif}
+body{
+ margin:0;min-height:100vh;
+ background:#000;color:#fff;
+ display:flex;align-items:center;justify-content:center;
 }
-
-.box {
-    background: rgba(0,0,0,0.75);
-    padding: 30px;
-    border-radius: 15px;
-    width: 380px;
-    box-shadow: 0 0 20px red;
-    display: none;
+.container{
+ width:100%;max-width:420px;
+ background:rgba(0,0,0,0.85);
+ border:2px solid #b00000;
+ border-radius:16px;
+ box-shadow:0 0 25px rgba(255,0,0,0.4);
+ overflow:hidden;
 }
-
-.box.active {
-    display: block;
+.header{
+ background:url('login.jpg') center/cover no-repeat;
+ padding:40px;text-align:center;
 }
-
-h2 {
-    text-align: center;
-    color: red;
-    margin-bottom: 20px;
+.header h1{margin:0;color:#ff0000;font-weight:800;letter-spacing:2px}
+.form{padding:25px;display:none}
+.form.active{display:block}
+input,select,textarea,button{
+ width:100%;margin:10px 0;padding:12px;
+ border-radius:10px;border:none;outline:none
 }
-
-label {
-    display: block;
-    margin-top: 12px;
-    font-weight: bold;
+input,select,textarea{background:#111;color:#fff;border:1px solid #333}
+button{
+ background:linear-gradient(135deg,#ff0000,#700000);
+ color:#fff;font-weight:600;cursor:pointer
 }
-
-input, select {
-    width: 100%;
-    padding: 10px;
-    border-radius: 8px;
-    border: none;
-    margin-top: 5px;
-}
-
-button {
-    width: 100%;
-    padding: 12px;
-    margin-top: 20px;
-    background: linear-gradient(45deg, red, black);
-    color: white;
-    border: none;
-    border-radius: 10px;
-    font-size: 16px;
-    cursor: pointer;
-}
-
-button:hover {
-    opacity: 0.85;
-}
+button:hover{opacity:.85}
+.switch{text-align:center;margin-top:10px;font-size:14px}
+.switch span{color:#ff0000;cursor:pointer}
+.note{font-size:12px;opacity:.8;margin-top:8px}
 </style>
 </head>
 <body>
 
-<!-- LOGIN -->
-<div class="box active" id="loginBox">
-    <h2>Login</h2>
+<div class="container">
+ <div class="header">
+   <h1>HELL COMMUNITY</h1>
+ </div>
 
-    <label>User Discord</label>
-    <input type="text" id="loginUser" required>
+ <!-- LOGIN -->
+ <div class="form active" id="login">
+   <h2>Login</h2>
+   <input type="text" placeholder="Discord Name" required>
+   <input type="password" placeholder="Password" required>
+   <button onclick="showApply()">Login</button>
+   <div class="switch">No account? <span onclick="showRegister()">Register</span></div>
+ </div>
 
-    <label>Password (4 chiffres)</label>
-    <input type="password" id="loginPass" maxlength="4" required>
+ <!-- REGISTER -->
+ <div class="form" id="register">
+   <h2>Register</h2>
+   <input type="text" placeholder="Discord Name" required>
+   <input type="email" placeholder="Email" required>
+   <input type="password" placeholder="Password" required>
+   <button onclick="showLogin()">Create Account</button>
+   <div class="switch">Already have account? <span onclick="showLogin()">Login</span></div>
+ </div>
 
-    <label>Confirm Password</label>
-    <input type="password" id="confirmPass" maxlength="4" required>
-
-    <button onclick="login()">Login</button>
-</div>
-
-<!-- APPLY STAFF -->
-<div class="box" id="applyBox">
-    <h2>Apply Staff</h2>
-
-    <label>Name in Discord</label>
-    <input type="text" id="discordName">
-
-    <label>Name IRL</label>
-    <input type="text" id="realName">
-
-    <label>Age</label>
-    <input type="number" id="age">
-
-    <label>Experience</label>
-    <input type="text" id="experience">
-
-    <label>Speciality</label>
-    <select id="speciality">
-        <option>Staff</option>
-        <option>Helper</option>
-    </select>
-
-    <label>Hobby</label>
-    <select id="hobby">
-        <option>Design</option>
-        <option>Dev</option>
-    </select>
-
-    <button onclick="sendToDiscord()">Apply</button>
+ <!-- APPLY STAFF -->
+ <div class="form" id="apply" style="background:url('apply.jpg') center/cover no-repeat">
+   <h2>Apply Staff</h2>
+   <input type="text" id="dname" placeholder="Discord Name" required>
+   <input type="text" id="irl" placeholder="IRL Name" required>
+   <input type="number" id="age" placeholder="Age IRL" required>
+   <textarea id="exp" placeholder="Experience (minimum 4 lines)" rows="4" required></textarea>
+   <select id="spec" required>
+     <option value="">Spécialité</option>
+     <option>Staff</option>
+     <option>Helper</option>
+   </select>
+   <select id="hobby" required>
+     <option value="">Hobbies</option>
+     <option>Developer</option>
+     <option>Designer</option>
+   </select>
+   <button onclick="sendApplication()">Send Application</button>
+   <div class="note">Applications are sent directly to Discord via Webhook.</div>
+ </div>
 </div>
 
 <script>
-const webhookURL = "https://discord.com/api/webhooks/1436795695020380283/yr341QmOOKk0IhC0PCMbjFaq5TrwyMWyOvwvxn0WPFVkQ2Hk0ulcKSNN2TvPmWzT4ogu";
+// 🔴 PUT YOUR DISCORD WEBHOOK URL HERE
+// How to get it: Discord > Server Settings > Integrations > Webhooks > New Webhook > Copy URL
+const DISCORD_WEBHOOK = 'https://discord.com/api/webhooks/1436795695020380283/yr341QmOOKk0IhC0PCMbjFaq5TrwyMWyOvwvxn0WPFVkQ2Hk0ulcKSNN2TvPmWzT4ogu';
 
-function login() {
-    const user = document.getElementById("loginUser").value;
-    const pass = document.getElementById("loginPass").value;
-    const confirm = document.getElementById("confirmPass").value;
+function showLogin(){hideAll();document.getElementById('login').classList.add('active')}
+function showRegister(){hideAll();document.getElementById('register').classList.add('active')}
+function showApply(){hideAll();document.getElementById('apply').classList.add('active')}
+function hideAll(){document.querySelectorAll('.form').forEach(f=>f.classList.remove('active'))}
 
-    if (pass.length !== 4) {
-        alert("Password khaso يكون 4 chiffres");
-        return;
-    }
+function sendApplication(){
+ const discordName=document.getElementById('dname').value.trim();
+ const irlName=document.getElementById('irl').value.trim();
+ const age=document.getElementById('age').value.trim();
+ const experience=document.getElementById('exp').value.trim();
+ const specialite=document.getElementById('spec').value;
+ const hobby=document.getElementById('hobby').value;
 
-    if (pass !== confirm) {
-        alert("Password machi nafs confirmation");
-        return;
-    }
+ if(!discordName||!irlName||!age||!experience||!specialite||!hobby){
+  alert('Fill all fields');return;
+ }
+ if(DISCORD_WEBHOOK.includes('PUT_YOUR')){
+  alert('https://discord.com/api/webhooks/1436795695020380283/yr341QmOOKk0IhC0PCMbjFaq5TrwyMWyOvwvxn0WPFVkQ2Hk0ulcKSNN2TvPmWzT4ogu');return;
+ }
 
-    if (user === "") {
-        alert("User Discord khass ytkteb");
-        return;
-    }
-
-    document.getElementById("loginBox").classList.remove("active");
-    document.getElementById("applyBox").classList.add("active");
-}
-
-function sendToDiscord() {
-    const data = {
-        content:
-        `**New Staff Application**\n
-        **Discord:** ${discordName.value}
-        **IRL Name:** ${realName.value}
-        **Age:** ${age.value}
-        **Experience:** ${experience.value}
-        **Speciality:** ${speciality.value}
-        **Hobby:** ${hobby.value}
-        https://cdn.discordapp.com/attachments/1450109489926897694/1450117378812936302/Sans_titre_14_20251105201004.png?ex=69415e8c&is=69400d0c&hm=712fe2deb80a3ed73076ab9fc993f9d1a1ca830b243192c65d9c88e9fa076613&
-        function sendToDiscord() {
-    const now = new Date().getTime();
-    const lastApply = localStorage.getItem("lastApplyTime");
-
-    // Check cooldown 2h = 2*60*60*1000 ms
-    if (lastApply && now - lastApply < 2*60*60*1000) {
-        const remaining = Math.ceil((2*60*60*1000 - (now - lastApply))/60000);
-        alert(`You must wait ${remaining} minutes before applying again.`);
-        return;
-    }
-
-    // Validate hobbies spelling
-    if (hobby.value !== "Design") {
-        alert("Hobbies must be 'Design'");
-        return;
-    }
-
-    const data = {
-        content:
-        `**New Staff Application**\n
-        **Discord:** ${discordName.value}
-        **IRL Name:** ${realName.value}
-        **Age:** ${age.value}
-        **Experience:** ${experience.value}
-        **Speciality:** ${speciality.value}
-        **Hobby:** ${hobby.value}`
-    };
-
-    fetch(webhookURL, {
-        method: "POST",
-        headers: {"Content-Type": "application/json"},
-        body: JSON.stringify(data)
-    });
-
-    alert("Application sent ✅");
-
-    // Save apply timestamp
-    localStorage.setItem("lastApplyTime", now);
-    }`
-    };
-
-    fetch(webhookURL, {
-        method: "POST",
-        headers: {"Content-Type": "application/json"},
-        body: JSON.stringify(data)
-    });
-
-    alert("Apply Staff Hell Sent ✅");
+ fetch(DISCORD_WEBHOOK,{
+  method:'POST',
+  headers:{'Content-Type':'application/json'},
+  body:JSON.stringify({
+   username:'Hell Apply Bot',
+   avatar_url:'',
+   embeds:[{
+    title:'🔥 New Staff Application - Hell Community',
+    color:15158332,
+    fields:[
+     {name:'Discord Name',value:discordName,inline:false},
+     {name:'IRL Name',value:irlName,inline:true},
+     {name:'Age',value:age,inline:true},
+     {name:'Experience',value:experience,inline:false},
+     {name:'Spécialité',value:specialite,inline:true},
+     {name:'Hobby',value:hobby,inline:true}
+    ],
+    footer:{text:'Hell Community | Staff Apply'}
+   }]
+  })
+ }).then(()=>{
+  alert('Application Sent Successfully');
+  document.querySelectorAll('#apply input, #apply textarea').forEach(e=>e.value='');
+  document.getElementById('spec').value='';
+  document.getElementById('hobby').value='';
+ }).catch(()=>alert('Error sending application'));
 }
 </script>
 
