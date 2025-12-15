@@ -1,147 +1,186 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Hell Community</title>
-    <style>
-        /* Reset & basic */
-        * { margin: 0; padding: 0; box-sizing: border-box; font-family: 'Arial', sans-serif; }
-        body {
-            background: linear-gradient(135deg, #000000, #1a1a1a);
-            color: #fff;
-        }
-        a { color: #ff0000; text-decoration: none; }
-        header {
-            background-color: #1a0000;
-            padding: 20px;
-            text-align: center;
-        }
-        header h1 {
-            color: #ff0000;
-            font-size: 3em;
-        }
-        nav {
-            margin: 20px 0;
-            text-align: center;
-        }
-        nav a {
-            margin: 0 15px;
-            font-size: 1.2em;
-            transition: 0.3s;
-        }
-        nav a:hover { color: #ff5555; }
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Hell Community</title>
 
-        /* Discord button */
-        .discord-btn {
-            background-color: #ff0000;
-            color: #fff;
-            padding: 12px 25px;
-            border-radius: 8px;
-            font-size: 1.2em;
-            text-decoration: none;
-            display: inline-block;
-            transition: 0.3s;
-            margin-top: 15px;
-        }
-        .discord-btn:hover {
-            background-color: #ff5555;
-            transform: scale(1.05);
-        }
+<style>
+*{
+    margin:0;
+    padding:0;
+    box-sizing:border-box;
+    font-family: 'Arial', sans-serif;
+}
 
-        .hero {
-            text-align: center;
-            padding: 50px 20px;
-            background: url('https://source.unsplash.com/1600x600/?dark,community') no-repeat center/cover;
-        }
-        .hero h2 {
-            color: #ff0000;
-            font-size: 2.5em;
-            background-color: rgba(0,0,0,0.6);
-            display: inline-block;
-            padding: 10px 20px;
-            border-radius: 10px;
-        }
+body{
+    background: radial-gradient(circle at top, #1a0000, #000000 70%);
+    color:#fff;
+}
 
-        .content {
-            padding: 50px 20px;
-            display: flex;
-            flex-wrap: wrap;
-            justify-content: center;
-            gap: 20px;
-        }
+/* ===== HEADER ===== */
+header{
+    text-align:center;
+    padding:40px 20px;
+    background: linear-gradient(to bottom, #000, #140000);
+    box-shadow: 0 0 30px #ff0000;
+}
 
-        .card {
-            background-color: #330000;
-            width: 300px;
-            border-radius: 10px;
-            overflow: hidden;
-            box-shadow: 0 0 10px #ff0000;
-            transition: transform 0.3s;
-        }
+/* Hell Community text */
+header h1{
+    font-size:4em;
+    color:#ff0000;
+    letter-spacing:4px;
+    text-transform:uppercase;
+    text-shadow:
+        0 0 10px #ff0000,
+        0 0 20px #ff0000,
+        0 0 40px #990000;
+    animation: glow 2s infinite alternate;
+}
 
-        .card img {
-            width: 100%;
-            height: 200px;
-            object-fit: cover;
-        }
+@keyframes glow{
+    from{ text-shadow: 0 0 10px #ff0000; }
+    to{ text-shadow: 0 0 30px #ff0000, 0 0 60px #990000; }
+}
 
-        .card h3 {
-            color: #ff0000;
-            padding: 15px;
-        }
+/* ===== DISCORD BUTTON ===== */
+.discord-btn{
+    margin-top:30px;
+    display:inline-block;
+    padding:18px 45px;
+    font-size:1.5em;
+    font-weight:bold;
+    color:#fff;
+    background: linear-gradient(45deg, #ff0000, #8b0000);
+    border-radius:50px;
+    text-decoration:none;
+    box-shadow:
+        0 0 15px #ff0000,
+        0 0 30px #660000;
+    transition:0.3s;
+    position:relative;
+    overflow:hidden;
+}
 
-        .card p {
-            color: #fff;
-            padding: 0 15px 15px 15px;
-        }
+.discord-btn::before{
+    content:"";
+    position:absolute;
+    top:0;
+    left:-100%;
+    width:100%;
+    height:100%;
+    background: linear-gradient(120deg, transparent, rgba(255,255,255,0.4), transparent);
+    transition:0.5s;
+}
 
-        .card:hover { transform: scale(1.05); }
+.discord-btn:hover::before{
+    left:100%;
+}
 
-        footer {
-            background-color: #1a0000;
-            text-align: center;
-            padding: 20px;
-            margin-top: 50px;
-        }
-    </style>
+.discord-btn:hover{
+    transform: scale(1.1);
+    box-shadow:
+        0 0 25px #ff0000,
+        0 0 60px #ff0000;
+}
+
+/* ===== HERO ===== */
+.hero{
+    text-align:center;
+    padding:80px 20px;
+    background:url("https://cdn.discordapp.com/attachments/1450109489926897694/1450237825823019080/Sans_titre_4_20251105192954.png") center/cover no-repeat;
+}
+
+.hero h2{
+    font-size:2.5em;
+    color:#fff;
+    background:rgba(0,0,0,0.7);
+    display:inline-block;
+    padding:15px 30px;
+    border-radius:15px;
+    box-shadow:0 0 20px #ff0000;
+}
+
+/* ===== CARDS ===== */
+.content{
+    padding:60px 20px;
+    display:flex;
+    flex-wrap:wrap;
+    justify-content:center;
+    gap:25px;
+}
+
+.card{
+    width:300px;
+    background:#140000;
+    border-radius:15px;
+    overflow:hidden;
+    box-shadow:0 0 20px #ff0000;
+    transition:0.3s;
+}
+
+.card img{
+    width:100%;
+    height:200px;
+    object-fit:cover;
+}
+
+.card h3{
+    color:#ff0000;
+    padding:15px;
+    text-align:center;
+}
+
+.card p{
+    padding:0 15px 20px;
+    text-align:center;
+}
+
+.card:hover{
+    transform:translateY(-10px) scale(1.05);
+}
+
+/* ===== FOOTER ===== */
+footer{
+    text-align:center;
+    padding:20px;
+    background:#0a0000;
+    box-shadow:0 0 20px #ff0000;
+}
+</style>
 </head>
+
 <body>
-    <header>
-        <h1>Hell Community</h1>
-        <nav>
-            <a href="#">🏡 Home </a>
-            <a href="#">About Us</a>
-            <a href="#">Gallery</a>
-            <a href="#">Contact</a>
-        </nav>
-        <!-- Discord Button -->
-        <a href="https://discord.gg/GqjXK2tK" target="_blank" class="discord-btn">Join Discord</a>
-    </header>
 
-    <section class="hero">
-        
+<header>
+    <h1>Hell Community</h1>
+    <a class="discord-btn" href="https://discord.gg/GqjXK2tK" target="_blank">
+        🔥 Join Discord 🔥
+    </a>
+</header>
 
-    <section class="content">
-        <div class="card">
-            <img src="https://cdn.discordapp.com/attachments/1450109489926897694/1450237825823019080/Sans_titre_4_20251105192954.png?ex=6941ceb9&is=69407d39&hm=c08f86dff49730b0b30cb0f04c0d4c67e5268c70c015fc34a60ef1104d430522&" alt="Community Image 1">
-            <h3>Our Mission</h3>
-            <p>Hell Community is a group of passionate gamers sharing experiences, tips, and epic moments together.</p>
-        </div>
-        <div class="card">
-            <img src="https://cdn.discordapp.com/attachments/1450109489926897694/1450238079867551794/Sans_titre_14_20251105213319.png?ex=6941cef6&is=69407d76&hm=85766bd489a990fd04ff79eef6593fe2cbee269a2cf0c0bc1498f1bfb99b63cb&" alt="Community Image 2">
-            <h3>Join Us</h3>
-            <p>Become a part of our community and connect with like-minded individuals. Share, play, and grow together.</p>
-        </div>
-        <div class="card">
-            <img src="https://cdn.discordapp.com/attachments/1435753514021294180/1436800689056649387/Sans_titre_14_20251108203119.png?ex=6941b3ea&is=6940626a&hm=9c6d0bfb147b8107b0a546e5899526e6f4cc89af4207d16471b060749afa00c9&" alt="Community Image 3">
-            <h3>Events & Challenges</h3>
-            <p>We organize exciting events and challenges regularly to keep the spirit alive and the community active.</p>
-        </div>
-    </section>
+<section class="hero">
+    
+</section>
 
-    <footer>
-        <p>&copy; ・Copyright © Hell Network, Inc. All rights reserved By Hell.Cm</p>
-    </footer>
+<section class="content">
+    <div class="card">
+        <img src="https://cdn.discordapp.com/attachments/1450109489926897694/1450237825823019080/Sans_titre_4_20251105192954.png">
+        <h3>Our Vision</h3>
+        <p>A powerful community where members share passion, power and respect.</p>
+    </div>
+
+    <div class="card">
+        <img src="https://cdn.discordapp.com/attachments/1450109489926897694/1450238079867551794/Sans_titre_14_20251105213319.png">
+        <h3>Strong Members</h3>
+        <p>Only serious people, no spam, no toxicity, pure energy.</p>
+    </div>
+</section>
+
+<footer>
+    ・Copyright © Hell Network, Inc. All rights reserved By Hell.Cm
+</footer>
+
 </body>
 </html>
