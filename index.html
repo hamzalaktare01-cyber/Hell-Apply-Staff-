@@ -8,7 +8,10 @@
     body {
         margin: 0;
         font-family: Arial, sans-serif;
-        background: linear-gradient(135deg, #ff0000, #000000);
+        /* Background image + gradient overlay */
+        background: linear-gradient(135deg, rgba(255,0,0,0.7), rgba(0,0,0,0.7)), 
+                    url('https://images.unsplash.com/photo-1601758173921-9f4c3e9c6a14?auto=format&fit=crop&w=1400&q=80') no-repeat center center fixed;
+        background-size: cover;
         color: #fff;
         display: flex;
         justify-content: center;
@@ -17,17 +20,19 @@
     }
 
     .form-container {
-        background-color: rgba(0, 0, 0, 0.7);
+        background-color: rgba(0, 0, 0, 0.75);
         padding: 30px;
         border-radius: 15px;
         width: 400px;
         box-shadow: 0 0 20px rgba(255,0,0,0.6);
+        backdrop-filter: blur(5px);
     }
 
     h2 {
         text-align: center;
         margin-bottom: 20px;
         color: #ff0000;
+        text-shadow: 1px 1px 5px black;
     }
 
     label {
