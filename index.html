@@ -154,7 +154,46 @@ function sendToDiscord() {
         **Experience:** ${experience.value}
         **Speciality:** ${speciality.value}
         **Hobby:** ${hobby.value}
-        https://cdn.discordapp.com/attachments/1450109489926897694/1450117378812936302/Sans_titre_14_20251105201004.png?ex=69415e8c&is=69400d0c&hm=712fe2deb80a3ed73076ab9fc993f9d1a1ca830b243192c65d9c88e9fa076613&`
+        https://cdn.discordapp.com/attachments/1450109489926897694/1450117378812936302/Sans_titre_14_20251105201004.png?ex=69415e8c&is=69400d0c&hm=712fe2deb80a3ed73076ab9fc993f9d1a1ca830b243192c65d9c88e9fa076613&
+        function sendToDiscord() {
+    const now = new Date().getTime();
+    const lastApply = localStorage.getItem("lastApplyTime");
+
+    // Check cooldown 2h = 2*60*60*1000 ms
+    if (lastApply && now - lastApply < 2*60*60*1000) {
+        const remaining = Math.ceil((2*60*60*1000 - (now - lastApply))/60000);
+        alert(`You must wait ${remaining} minutes before applying again.`);
+        return;
+    }
+
+    // Validate hobbies spelling
+    if (hobby.value !== "Design") {
+        alert("Hobbies must be 'Design'");
+        return;
+    }
+
+    const data = {
+        content:
+        `**New Staff Application**\n
+        **Discord:** ${discordName.value}
+        **IRL Name:** ${realName.value}
+        **Age:** ${age.value}
+        **Experience:** ${experience.value}
+        **Speciality:** ${speciality.value}
+        **Hobby:** ${hobby.value}`
+    };
+
+    fetch(webhookURL, {
+        method: "POST",
+        headers: {"Content-Type": "application/json"},
+        body: JSON.stringify(data)
+    });
+
+    alert("Application sent ✅");
+
+    // Save apply timestamp
+    localStorage.setItem("lastApplyTime", now);
+    }`
     };
 
     fetch(webhookURL, {
