@@ -3,6 +3,299 @@
 <head>
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>𝐇𝐞𝐥𝐥 𝐂𝐨𝐦𝐦𝐮𝐧𝐢𝐭𝐲
+</title>
+<style>
+*{
+    margin:0;
+    padding:0;
+    box-sizing:border-box;
+    font-family: Arial, sans-serif;
+}
+
+/* FIX: Add min-height to html and body */
+html, body{
+    height:100%;
+    min-height:100%;
+    overflow-x:hidden; /* Prevent horizontal scroll */
+}
+
+body{
+    background: linear-gradient(135deg, #000000, #1a1a1a);
+    color:#fff;
+    background-attachment: fixed; /* FIX: Keep gradient fixed */
+    position: relative;
+}
+
+/* FIX: Add a pseudo-element to ensure full coverage */
+body::before {
+    content: '';
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background: linear-gradient(135deg, #000000, #1a1a1a);
+    z-index: -1;
+}
+
+/* ===== HEADER ===== */
+header{
+    background:#0d0000;
+    padding:35px 20px;
+    text-align:center;
+    box-shadow:0 0 30px #ff0000;
+    position: relative;
+    z-index: 1;
+}
+
+/* Hell Community TEXT EFFECT */
+header h1{
+    font-size:3.8em;
+    color:#ff0000;
+    letter-spacing:4px;
+    text-transform:uppercase;
+    text-shadow:
+        0 0 10px #ff0000,
+        0 0 25px #ff0000,
+        0 0 50px #990000;
+    animation: glow 2s infinite alternate;
+}
+
+@keyframes glow{
+    from{ text-shadow:0 0 10px #ff0000; }
+    to{ text-shadow:0 0 30px #ff0000, 0 0 70px #990000; }
+}
+
+/* ===== NAV ===== */
+nav{
+    margin:20px 0;
+}
+nav a{
+    color:#ff0000;
+    margin:0 15px;
+    font-size:1.2em;
+    text-decoration:none;
+    transition: color 0.3s;
+}
+nav a:hover{
+    color:#ff5555;
+}
+
+/* ===== JOIN DISCORD BUTTON ===== */
+.discord-btn{
+    display:inline-block;
+    margin-top:20px;
+    padding:16px 45px;
+    font-size:1.4em;
+    font-weight:bold;
+    color:#fff;
+    background:linear-gradient(45deg,#ff0000,#8b0000);
+    border-radius:50px;
+    text-decoration:none;
+    box-shadow:
+        0 0 15px #ff0000,
+        0 0 40px #660000;
+    transition:0.3s;
+    position:relative;
+    overflow:hidden;
+    cursor: pointer;
+}
+
+.discord-btn::before{
+    content:"";
+    position:absolute;
+    top:0;
+    left:-100%;
+    width:100%;
+    height:100%;
+    background:linear-gradient(120deg,transparent,rgba(255,255,255,0.5),transparent);
+    transition:0.6s;
+}
+
+.discord-btn:hover::before{
+    left:100%;
+}
+.discord-btn:hover{
+    transform:scale(1.1);
+    box-shadow:
+        0 0 30px #ff0000,
+        0 0 70px #ff0000;
+}
+
+/* ===== HERO ===== */
+.hero{
+    text-align:center;
+    padding:60px 20px;
+    background:url("https://source.unsplash.com/1600x600/?dark,community") center/cover no-repeat;
+    position: relative;
+    min-height: 300px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+
+.hero::before {
+    content: '';
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background: rgba(0, 0, 0, 0.6);
+}
+
+.hero h2{
+    font-size:2.4em;
+    color:#ff0000;
+    background:rgba(0,0,0,0.7);
+    display:inline-block;
+    padding:15px 30px;
+    border-radius:12px;
+    box-shadow:0 0 20px #ff0000;
+    position: relative;
+    z-index: 1;
+}
+
+/* ===== CARDS ===== */
+.content{
+    padding:60px 20px;
+    display:flex;
+    flex-wrap:wrap;
+    justify-content:center;
+    gap:25px;
+    position: relative;
+    z-index: 1;
+    max-width: 1200px;
+    margin: 0 auto;
+}
+
+.card{
+    width:300px;
+    background:#330000;
+    border-radius:12px;
+    overflow:hidden;
+    box-shadow:0 0 15px #ff0000;
+    transition:0.3s;
+    border: 1px solid #ff000033;
+}
+
+.card img{
+    width:100%;
+    height:200px;
+    object-fit:cover;
+    display: block;
+}
+
+.card h3{
+    color:#ff0000;
+    padding:15px;
+    font-size: 1.4em;
+}
+
+.card p{
+    padding:0 15px 20px;
+    line-height: 1.6;
+    color: #ffcccc;
+}
+
+.card:hover{
+    transform:scale(1.05) translateY(-8px);
+    box-shadow:0 0 30px #ff0000;
+    border-color: #ff0000;
+}
+
+/* ===== FOOTER ===== */
+footer{
+    background:#0d0000;
+    text-align:center;
+    padding:20px;
+    margin-top:50px;
+    box-shadow:0 0 20px #ff0000;
+    position: relative;
+    z-index: 1;
+}
+
+/* FIX: Add responsive design */
+@media (max-width: 768px) {
+    header h1 {
+        font-size: 2.5em;
+    }
+    
+    .content {
+        padding: 40px 15px;
+    }
+    
+    .card {
+        width: 100%;
+        max-width: 350px;
+    }
+    
+    .discord-btn {
+        padding: 14px 30px;
+        font-size: 1.2em;
+    }
+    
+    nav a {
+        display: inline-block;
+        margin: 5px 10px;
+    }
+}
+</style>
+</head>
+
+<body>
+
+<header>
+    <h1>Hell Community</h1>
+
+    <nav>
+        <a href="#">Home</a>
+        <a href="#">About</a>
+        <a href="#">Gallery</a>
+        
+    </nav>
+
+    <a href="https://discord.gg/GqjXK2tK" target="_blank" class="discord-btn">
+         🔓Join Discord
+    </a>
+</header>
+
+<section class="hero">
+    
+</section>
+
+<section class="content">
+    <div class="card">
+        <img src="https://cdn.discordapp.com/attachments/1450109489926897694/1450433651966869515/Sans_titre_4_20251105192954.png?ex=6942851a&is=6941339a&hm=085cf63b614d246377fed3079fdd9766bcf32573ea35383f502ac6be134f84f8&" alt="About Us">
+        <h3>About Us</h3>
+        <p>Hell Community is a place for serious members and strong vibes. We focus on quality interactions and meaningful connections.</p>
+    </div>
+
+    <div class="card">
+        <img src="https://cdn.discordapp.com/attachments/1450109489926897694/1450433683856031879/Sans_titre_14_20251105213319.png?ex=69428521&is=694133a1&hm=a4d78e2d4f95ba87ade5798e3b0470bf86f4ede298d57ffa2594f1539655fb50&" alt="Welcome To Hell">
+        <h3>Join Us</h3>
+        <p>Be part of a clean community without spam or toxicity. We value respect and positive energy in all interactions.</p>
+    </div>
+
+    <div class="card">
+        <img src="https://cdn.discordapp.com/attachments/1450109489926897694/1450433882611515484/Sans_titre_14_20251108203119.png?ex=69428551&is=694133d1&hm=175e5ec786701aadca0fb964151513ce8fa1f0028ee8e27f3527d4a883d8ee57&" alt="Events">
+        <h3>Events</h3>
+        <p>Participate in exclusive events, challenges, and activities designed for our community members.</p>
+    </div>
+</section>
+
+<footer>
+    ・Copyright © Hell Network, Inc. All rights reserved By Hell.Cm
+</footer>
+
+</body>
+</html>
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
 <title>Hell Community</title>
 <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
 <style>
