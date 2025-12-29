@@ -1,16 +1,13 @@
 <style>
-    /* Reset & basic */
-    * { margin: 0; padding: 0; box-sizing: border-box; font-family: 'Arial', sans-serif; }
+    * { margin: 0; padding: 0; box-sizing: border-box; font-family: Arial, sans-serif; }
 
     body {
-        background: linear-gradient(135deg, #0a1a2f, #0f2a44, #ffffff);
-        color: #0f2a44;
+        background: linear-gradient(135deg, #f5f9ff, #e8f0ff);
+        color: #0b2e4f;
     }
 
-    a { color: #1e90ff; text-decoration: none; }
-
     header {
-        background: linear-gradient(135deg, #0a1a2f, #0f3c66);
+        background: linear-gradient(135deg, #0b4da2, #1e6fd9);
         padding: 20px;
         text-align: center;
     }
@@ -22,7 +19,6 @@
 
     nav {
         margin: 20px 0;
-        text-align: center;
     }
 
     nav a {
@@ -32,34 +28,32 @@
         transition: 0.3s;
     }
 
-    nav a:hover { 
-        color: #9cc9ff; 
+    nav a:hover {
+        color: #cce4ff;
     }
 
-    /* Button */
     .discord-btn {
-        background: linear-gradient(135deg, #ffffff, #dbe9ff);
-        color: #0f3c66;
+        background: #ffffff;
+        color: #0b4da2;
         padding: 12px 25px;
         border-radius: 8px;
         font-size: 1.2em;
         display: inline-block;
-        transition: 0.3s;
         margin-top: 15px;
         font-weight: bold;
+        transition: 0.3s;
     }
 
     .discord-btn:hover {
-        background: linear-gradient(135deg, #cfe4ff, #ffffff);
+        background: #dbe9ff;
         transform: scale(1.05);
     }
 
     .hero {
-        text-align: center;
-        padding: 50px 20px;
+        padding: 60px 20px;
         background: linear-gradient(
-            rgba(10,26,47,0.6),
-            rgba(10,26,47,0.6)
+            rgba(11,77,162,0.45),
+            rgba(11,77,162,0.45)
         ),
         url('https://source.unsplash.com/1600x600/?technology,blue') 
         no-repeat center/cover;
@@ -71,37 +65,43 @@
         flex-wrap: wrap;
         justify-content: center;
         gap: 20px;
-        background: linear-gradient(135deg, #ffffff, #e6f0ff);
+        background: linear-gradient(135deg, #ffffff, #eef4ff);
     }
 
     .card {
-        background: linear-gradient(135deg, #ffffff, #f2f7ff);
+        background: #ffffff;
         width: 300px;
         border-radius: 10px;
         overflow: hidden;
-        box-shadow: 0 10px 25px rgba(15,60,102,0.25);
-        transition: transform 0.3s;
+        box-shadow: 0 8px 20px rgba(11,77,162,0.25);
+        transition: 0.3s;
+    }
+
+    .card img {
+        width: 100%;
+        height: 200px;
+        object-fit: cover;
     }
 
     .card h3 {
-        color: #0f3c66;
+        color: #0b4da2;
         padding: 15px;
     }
 
     .card p {
-        color: #1b3552;
-        padding: 0 15px 15px 15px;
+        color: #1c3f66;
+        padding: 0 15px 15px;
     }
 
-    .card:hover { 
-        transform: scale(1.05); 
+    .card:hover {
+        transform: scale(1.05);
     }
 
     footer {
-        background: linear-gradient(135deg, #0a1a2f, #0f3c66);
+        background: linear-gradient(135deg, #0b4da2, #1e6fd9);
+        color: #ffffff;
         text-align: center;
         padding: 20px;
         margin-top: 50px;
-        color: #ffffff;
     }
 </style>
