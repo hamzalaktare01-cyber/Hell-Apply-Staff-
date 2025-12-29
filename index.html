@@ -1,163 +1,183 @@
-<!DOCTYPE html>
-<html lang="en">
+<!DOCTYPE html><html lang="en">
 <head>
     <meta charset="UTF-8">
+    <title>MasterS RolePlay</title>
+    <meta name="viewport" content="width=device-width, initial-scale=1.0"><!-- Fonts -->
+<link href="https://fonts.googleapis.com/css2?family=Montserrat:wght@300;500;700&display=swap" rel="stylesheet">
+
+<style>
+    *{
+        margin:0;
+        padding:0;
+        box-sizing:border-box;
+        font-family:'Montserrat', sans-serif;
+    }
+    body{
+        background:#0b0b0b;
+        color:#fff;
+        overflow-x:hidden;
+    }
+    header{
+        position:fixed;
+        top:0;
+        left:0;
+        width:100%;
+        height:70px;
+        background:rgba(0,0,0,0.7);
+        display:flex;
+        align-items:center;
+        justify-content:space-between;
+        padding:0 40px;
+        z-index:1000;
+    }
+    header h1{
+        color:#ff0000;
+        font-size:24px;
+        font-weight:700;
+    }
+    nav a{
+        color:#fff;
+        text-decoration:none;
+        margin-left:20px;
+        font-weight:500;
+        transition:0.3s;
+    }
+    nav a:hover{
+        color:#ff0000;
+    }
+    .hero{
+        height:100vh;
+        display:flex;
+    }
+    .role{
+        flex:1;
+        position:relative;
+        background-size:cover;
+        background-position:center;
+        filter:grayscale(100%);
+        transition:0.5s;
+        cursor:pointer;
+    }
+    .role:hover{
+        filter:grayscale(0%);
+        flex:1.2;
+    }
+    .overlay{
+        position:absolute;
+        bottom:40px;
+        left:30px;
+    }
+    .overlay span{
+        display:block;
+        font-size:14px;
+        opacity:0.7;
+    }
+    .overlay h2{
+        font-size:28px;
+        color:#ff0000;
+    }
+</style>
+
+</head>
+<body><header>
+    <h1>MasterS RP</h1>
+    <nav>
+        <a href="#">Home</a>
+        <a href="#login">Login</a>
+        <a href="#">EN | FR | AR</a>
+    </nav>
+</header><section class="hero">
+    <div class="role" style="background-image:url('police.jpg')">
+        <div class="overlay">
+            <span>BECOME A</span>
+            <h2>POLICE</h2>
+        </div>
+    </div>
+    <div class="role" style="background-image:url('gangster.jpg')">
+        <div class="overlay">
+            <span>BECOME A</span>
+            <h2>GANGSTER</h2>
+        </div>
+    </div>
+    <div class="role" style="background-image:url('mechanic.jpg')">
+        <div class="overlay">
+            <span>BECOME A</span>
+            <h2>MECHANIC</h2>
+        </div>
+    </div>
+    <div class="role" style="background-image:url('business.jpg')">
+        <div class="overlay">
+            <span>BECOME A</span>
+            <h2>BUSINESSMAN</h2>
+        </div>
+    </div>
+</section></body>
+</html><!-- ================= LOGIN PAGE ================= --><!-- Save this part as login.html --><!DOCTYPE html><html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Login | MasterS RP</title>
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>MasterS Tm</title>
+    <link href="https://fonts.googleapis.com/css2?family=Montserrat:wght@300;500;700&display=swap" rel="stylesheet">
     <style>
-        /* Reset & basic */
-        * { margin: 0; padding: 0; box-sizing: border-box; font-family: 'Arial', sans-serif; }
-
-        body {
-            background: linear-gradient(135deg, #0a1cff, #ffffff);
-            color: #0a1cff;
+        body{
+            margin:0;
+            font-family:'Montserrat', sans-serif;
+            background:linear-gradient(135deg,#000,#1a0000);
+            height:100vh;
+            display:flex;
+            justify-content:center;
+            align-items:center;
+            color:#fff;
         }
-
-        a { color: #0a1cff; text-decoration: none; }
-
-        header {
-            background: linear-gradient(135deg, #0a1cff, #4da6ff);
-            padding: 20px;
-            text-align: center;
+        .login-box{
+            background:rgba(0,0,0,0.8);
+            padding:40px;
+            width:350px;
+            border-radius:12px;
+            box-shadow:0 0 30px rgba(255,0,0,0.4);
         }
-
-        header h1 {
-            color: #ffffff;
-            font-size: 3em;
+        .login-box h2{
+            text-align:center;
+            margin-bottom:30px;
+            color:#ff0000;
         }
-
-        nav {
-            margin: 20px 0;
-            text-align: center;
+        .login-box input{
+            width:100%;
+            padding:12px;
+            margin-bottom:20px;
+            background:#111;
+            border:1px solid #333;
+            color:#fff;
+            border-radius:6px;
         }
-
-        nav a {
-            margin: 0 15px;
-            font-size: 1.2em;
-            transition: 0.3s;
-            color: #ffffff;
+        .login-box button{
+            width:100%;
+            padding:12px;
+            background:#ff0000;
+            border:none;
+            color:#fff;
+            font-size:16px;
+            font-weight:600;
+            border-radius:6px;
+            cursor:pointer;
+            transition:0.3s;
         }
-
-        nav a:hover { color: #e6f0ff; }
-
-        /* Discord Button */
-        .discord-btn {
-            background: linear-gradient(135deg, #0a1cff, #4da6ff);
-            color: #fff;
-            padding: 12px 25px;
-            border-radius: 8px;
-            font-size: 1.2em;
-            display: inline-block;
-            transition: 0.3s;
-            margin-top: 15px;
+        .login-box button:hover{
+            background:#cc0000;
         }
-
-        .discord-btn:hover {
-            transform: scale(1.05);
-            filter: brightness(1.1);
-        }
-
-        .hero {
-            text-align: center;
-            padding: 50px 20px;
-            background: url('https://source.unsplash.com/1600x600/?dark,community') no-repeat center/cover;
-        }
-
-        .hero h2 {
-            color: #ffffff;
-            font-size: 2.5em;
-            background-color: rgba(10, 28, 255, 0.6);
-            display: inline-block;
-            padding: 10px 20px;
-            border-radius: 10px;
-        }
-
-        .content {
-            padding: 50px 20px;
-            display: flex;
-            flex-wrap: wrap;
-            justify-content: center;
-            gap: 20px;
-        }
-
-        .card {
-            background: linear-gradient(135deg, #ffffff, #e6f0ff);
-            width: 300px;
-            border-radius: 10px;
-            overflow: hidden;
-            box-shadow: 0 0 15px rgba(10, 28, 255, 0.6);
-            transition: transform 0.3s;
-        }
-
-        .card img {
-            width: 100%;
-            height: 200px;
-            object-fit: cover;
-        }
-
-        .card h3 {
-            color: #0a1cff;
-            padding: 15px;
-        }
-
-        .card p {
-            color: #333;
-            padding: 0 15px 15px 15px;
-        }
-
-        .card:hover { transform: scale(1.05); }
-
-        footer {
-            background: linear-gradient(135deg, #0a1cff, #4da6ff);
-            text-align: center;
-            padding: 20px;
-            margin-top: 50px;
-            color: #ffffff;
+        .lang{
+            text-align:center;
+            margin-top:15px;
+            font-size:13px;
+            opacity:0.7;
         }
     </style>
 </head>
-<body>
-
-<header>
-    <h1>MasterS Community</h1>
-    <nav>
-        <a href="#">🏡 Home</a>
-        <a href="#">About Us</a>
-        <a href="#">Gallery</a>
-    </nav>
-    <a href="https://discord.gg/GqjXK2tK" target="_blank" class="discord-btn">Download</a>
-</header>
-
-<section class="hero"></section>
-
-<section class="content">
-    <div class="card">
-        <img src="https://cdn.discordapp.com/attachments/1426298386692309163/1429158780834287626/41266ae6078b8e60a9b052d23920702d-1-1.png?ex=69521115&is=6950bf95&hm=4da9ac04147f4795d42a87ffed4243570e8c327a391402c5280e5c2f0737098c&" alt="">
-        <h3>Our Mission</h3>
-        <p>MasterS Community is a group of passionate gamers sharing experiences, tips, and epic moments together.</p>
-    </div>
-
-    <div class="card">
-        <img src="https://cdn.discordapp.com/attachments/1426298386692309163/1454561636273885465/20250801_173623.png?ex=69523256&is=6950e0d6&hm=cb70989b807f7a7dc08c31a1d89d2aaefa58dc3f986e1fea293031ec2076d9df&" alt="">
-        <h3>Join Us</h3>
-        <p>Become a part of our community and connect with like-minded individuals. Share, play, and grow together.</p>
-    </div>
-
-    <div class="card">
-        <img src="https://cdn.discordapp.com/attachments/1426298386692309163/1454561636273885465/20250801_173623.png?ex=69523256&is=6950e0d6&hm=cb70989b807f7a7dc08c31a1d89d2aaefa58dc3f986e1fea293031ec2076d9df&" alt="MasterS Image 2">
-            <h3>Join Us</h3>
-            <p>Become a part of our community and connect with like-minded individuals. Share, play, and grow together.</p>
-        </div>
-        <div class="card">
-            <img src="https://cdn.discordapp.com/attachments/1426298386692309163/1446466560331087974/WhatsApp_Image_2025-11-05_a_00.03.42_a314606d-1.jpg?ex=695268f6&is=69511776&hm=14af6495baa2e03c68b5bba0c6f168da32c51beb7ba8dc73f89849e7934fa32f&" alt="">
-        <h3>Events & Challenges</h3>
-        <p>We organize exciting events and challenges regularly to keep the spirit alive and the community active.</p>
-    </div>
-</section>
-
-<footer>
-    <p>&copy; Copyright © MasterS Network, Inc. All rights reserved By MasterS.Tm</p>
-</footer>
-
-</body>
-</html>
+<body><div class="login-box">
+    <h2>MasterS Login</h2>
+    <input type="text" placeholder="SA-MP Username">
+    <input type="password" placeholder="Password">
+    <button>LOGIN</button>
+    <div class="lang">EN | FR | AR</div>
+</div></body>
+    </html>
